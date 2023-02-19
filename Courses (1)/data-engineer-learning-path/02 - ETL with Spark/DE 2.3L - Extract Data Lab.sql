@@ -65,8 +65,27 @@
 
 -- COMMAND ----------
 
--- TODO
-<FILL_IN> f"{DA.paths.kafka_events}" 
+
+-- ANSWER
+CREATE TABLE IF NOT EXISTS events_json
+  (key BINARY, offset BIGINT, partition INT, timestamp BIGINT, topic STRING, value BINARY)
+USING JSON 
+LOCATION "${DA.paths.kafka_events}"
+
+-- COMMAND ----------
+
+-- MAGIC 
+-- MAGIC %sql
+-- MAGIC CREATE TABLE IF NOT EXISTS events_json(
+-- MAGIC key BINARY,
+-- MAGIC offset BIGINT,
+-- MAGIC partition INT,
+-- MAGIC timestamp BIGINT,
+-- MAGIC topic STRING,
+-- MAGIC value BINARY
+-- MAGIC )
+-- MAGIC USING JSON
+-- MAGIC LOCATION "{DA.paths.kafka_events}" 
 
 -- COMMAND ----------
 
